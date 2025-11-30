@@ -1,0 +1,20 @@
+blocks:
+  - permission
+  - size
+  - user
+  - group
+  - date
+  - name
+
+date: '+%d %b %Y %H:%M'
+icons:
+  when: never
+color:
+  when: auto
+  theme: custom
+permission: rwx
+size:  short
+sorting:
+  column: name
+symlink-arrow: ->
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Android Emulator - Pixel9
+Comment=Launch Android Emulator with Pixel 9 device
+Exec=sh -c '$HOME/Android/sdk/emulator/emulator -avd pixel9-emulator'
+Icon=android-emulator
+Terminal=false
+Type=Application

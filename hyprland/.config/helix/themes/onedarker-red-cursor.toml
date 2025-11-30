@@ -1,0 +1,12 @@
+inherits = "onedarker"
+
+# Bright red cursor customization (like Ghostty)
+"ui.cursor" = { bg = "#ff0000", fg = "#000000" }
+"ui.cursor.primary" = { bg = "#ff0000", fg = "#000000" }
+"ui.cursor.insert" = { bg = "#ff0000", fg = "#000000" }
+"ui.cursor.select" = { bg = "#ff0000", fg = "#000000" }
+"ui.cursor.match" = { bg = "#ff0000", fg = "#000000" }
+
+# Line numbers (matching Neovim)
+"ui.linenr.selected" = { fg = "#ff9e64", modifiers = ["bold"] }
+"ui.linenr" = { fg = "#4b5263" }

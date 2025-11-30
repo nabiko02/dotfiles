@@ -1,0 +1,14 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "2ad42fa"
+hash = "1adc12c2b2b025411ab61eb8f0879574"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:no-status"
+rev = "2ad42fa"
+hash = "3e023d31f29201efdac2a6ae35fedb78"
+
+[[flavor.deps]]
+use = "956MB/vscode-dark-plus"
+rev = "113cc48"
+hash = "fb2175ea2b78bff55fa83d0661d77407"

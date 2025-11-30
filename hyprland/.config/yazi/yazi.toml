@@ -1,0 +1,7 @@
+[mgr]
+show_hidden = true
+ratio = [1,3,4]
+sort_by = "natural"
+sort_sensitive = false
+show_symlink = true
+
