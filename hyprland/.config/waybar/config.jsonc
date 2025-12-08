@@ -95,7 +95,6 @@
 	},
 	"backlight": {
 		// "device": "acpi_video1",
-		"scroll-step": 5.0,
 		"format": "{percent}% {icon}",
 		"format-icons": ["", "", "", "", "", "", "", "", ""]
 	},
