@@ -19,7 +19,7 @@
 	"modules-right": [
 		"custom/gpu-usage",
 		// "custom/notification",
-		"mpd",
+		// "mpd",
 		"pulseaudio",
 		"power-profiles-daemon",
 		"backlight",
