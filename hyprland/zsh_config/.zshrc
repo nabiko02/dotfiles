@@ -8,7 +8,7 @@ skip_global_compinit=1
 # Oh My Zsh Setup
 # ─────────────────────────────────────────────
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(zsh-autosuggestions zsh-syntax-highlighting fzf)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting fzf gradle)
 
 source "$ZSH/oh-my-zsh.sh"
 
