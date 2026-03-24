@@ -45,6 +45,7 @@ path=(
     $path
     $HOME/.config/emacs/bin
     $HOME/.bun/bin
+    /usr/bin/vendor_perl
 )
 
 # ─────────────────────────────────────────────
