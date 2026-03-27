@@ -17,10 +17,11 @@ source "$ZSH/oh-my-zsh.sh"
 # ─────────────────────────────────────────────
 # Only run compinit once per day for better performance
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
     compinit -d ~/.zcompdump
-done
-[[ -f ~/.zcompdump ]] && compinit -C -d ~/.zcompdump
+else
+    compinit -C -d ~/.zcompdump
+fi
 
 # ─────────────────────────────────────────────
 # Environment Variables
