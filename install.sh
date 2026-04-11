@@ -62,6 +62,7 @@ echo "Installing packages..."
 PACKAGES=(
     "7zip"
     "android-tools"
+    "arch-update"
     "bat"
     "bitwarden"
     "bluetui"
