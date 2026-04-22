@@ -40,6 +40,13 @@
             "monitoring": true
          }
       },
+      "core": {
+         "entrypoints": {
+            "report-bug": {
+               "enabled": false
+            }
+         }
+      },
       "system": {
          "entrypoints": {
             "run": {
