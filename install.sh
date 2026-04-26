@@ -166,7 +166,7 @@ PACKAGES=(
     "whitesur-gtk-theme"
     "wireplumber"
     "wl-clipboard"
-    "xcursor-breeze"
+    "breezex-cursor-theme"
     "yazi"
     "zen-browser-bin"
     "zenity"
