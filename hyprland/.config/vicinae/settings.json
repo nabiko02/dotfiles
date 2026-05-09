@@ -24,6 +24,12 @@
    "telemetry": {
       "system_info": false
    },
+   "favorites": [
+      "applications:onlyoffice-desktopeditors",
+      "applications:curseforge",
+      "applications:com.moonlight_stream.Moonlight",
+      "clipboard:history"
+   ],
    "providers": {
       "@leonkohli/store.vicinae.process-manager": {
          "entrypoints": {
