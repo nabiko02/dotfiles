@@ -1,16 +1,22 @@
-local home = os.getenv("HOME")
+local cfg = require("hyprland.config")
+
+local startup_apps = {
+    "waybar",
+    "nm-applet --indicator",
+    "hypridle",
+    "hyprctl setcursor BreezeX-Light 36",
+    "discord",
+    "zen-browser",
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+    "vicinae server",
+    "python " .. cfg.home .. "/.local/bin/razer_keyboard.py",
+    "hyprpaper",
+    cfg.home .. "/.config/hypr/change_wallpapers.sh",
+    "/opt/teams-for-linux/teams-for-linux",
+}
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar")
-    hl.exec_cmd("nm-applet --indicator")
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("hyprctl setcursor BreezeX-Light 36")
-    hl.exec_cmd("discord")
-    hl.exec_cmd("zen-browser")
-    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-    hl.exec_cmd("vicinae server")
-    hl.exec_cmd("python " .. home .. "/.local/bin/razer_keyboard.py")
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd(home .. "/.config/hypr/change_wallpapers.sh")
-    hl.exec_cmd("/opt/teams-for-linux/teams-for-linux")
+    for _, app in ipairs(startup_apps) do
+        hl.exec_cmd(app)
+    end
 end)

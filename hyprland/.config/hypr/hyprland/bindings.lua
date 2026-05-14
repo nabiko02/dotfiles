@@ -1,8 +1,9 @@
-local terminal = "GTK_IM_MODULE=simple ghostty --gtk-single-instance=true"
-local menu     = "vicinae toggle"
-local mainMod  = "ALT"
-local win      = "SUPER"
-local home     = os.getenv("HOME")
+local cfg      = require("hyprland.config")
+local terminal = cfg.terminal
+local menu     = cfg.menu
+local mainMod  = cfg.mainMod
+local win      = cfg.win
+local home     = cfg.home
 
 -- Core
 hl.bind(mainMod .. " + RETURN",    hl.dsp.exec_cmd(terminal))
