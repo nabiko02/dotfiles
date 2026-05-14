@@ -1,0 +1,8 @@
+require("hyprland.monitors")
+require("hyprland.varenv")
+require("hyprland.ui")
+require("hyprland.input")
+require("hyprland.bindings")
+require("hyprland.workspace")
+require("hyprland.autostart")
+require("hyprland.misc")
