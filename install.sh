@@ -89,7 +89,6 @@ PACKAGES=(
     "gnome-calculator"
     "gnome-calendar"
     "gnome-keyring"
-    "gnu-netcat"
     "go"
     "graphicsmagick"
     "gthumb"
