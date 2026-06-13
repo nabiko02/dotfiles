@@ -28,10 +28,11 @@ err()  { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
 info() { printf '==> %s\n' "$*"; }
 
 [[ $EUID -eq 0 ]] || err "Run as root."
-[[ $# -eq 2 ]] || err "Usage: $0 <phase1|phase2> <luks-partition>"
+[[ $# -ge 2 && $# -le 3 ]] || err "Usage: $0 <phase1|phase2> <luks-partition> [btrfs|ext4]"
 
 PHASE="$1"
 LUKS_DEV="$2"
+FS_OVERRIDE="${3:-}" # Optional third argument
 
 [[ -d /sys/firmware/efi ]] || err "Not booted in UEFI mode."
 [[ -b "$LUKS_DEV" ]] || err "$LUKS_DEV is not a block device."
@@ -53,6 +54,28 @@ info "Using ESP: $ESP"
 info "LUKS UUID: $LUKS_UUID"
 
 phase1() {
+    info "Detecting root filesystem configuration..."
+    local fs_type="$FS_OVERRIDE"
+    local root_flags=""
+
+    # Auto-detect if no override flag is passed
+    if [[ -z "$fs_type" ]]; then
+        fs_type="$(findmnt -no FSTYPE / 2>/dev/null || echo "ext4")"
+    fi
+
+    if [[ "$fs_type" == "btrfs" ]]; then
+        # Dynamically fetch the current root subvolume name (e.g., @)
+        local subvol
+        subvol="$(findmnt -no OPTIONS / 2>/dev/null | tr ',' '\n' | grep '^subvol=' | cut -d= -f2 || echo "")"
+        if [[ -z "$subvol" || "$subvol" == "/" ]]; then
+            subvol="@" # Fallback to standard default
+        fi
+        root_flags=" rootflags=subvol=${subvol}"
+        info "Configuring for BTRFS (Subvolume: ${subvol})"
+    else
+        info "Configuring for standard filesystem (ext4/other)"
+    fi
+
     info "Installing required packages"
     pacman -S --needed --noconfirm sbctl systemd-ukify tpm2-tss efibootmgr
 
@@ -71,7 +94,7 @@ phase1() {
     # rd.luks.options=tpm2-device=auto makes the initramfs try TPM unlock,
     # falling back to passphrase prompt if the TPM refuses.
     cat > /etc/kernel/cmdline <<EOF
-rd.luks.name=${LUKS_UUID}=root rd.luks.options=${LUKS_UUID}=tpm2-device=auto root=/dev/mapper/root rw quiet
+rd.luks.name=${LUKS_UUID}=root rd.luks.options=${LUKS_UUID}=tpm2-device=auto root=/dev/mapper/root${root_flags} rw quiet
 EOF
 
     info "Switching mkinitcpio to systemd hooks (sd-encrypt)"
