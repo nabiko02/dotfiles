@@ -10,7 +10,9 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.close())
 hl.bind(
 	mainMod .. " + SHIFT + E",
-	hl.dsp.exec_cmd('zenity --question --text="Are you sure you want to quit Hyprland?" && hyprctl dispatch exit')
+	hl.dsp.exec_cmd(
+		'zenity --question --text="Are you sure you want to quit Hyprland?" && hyprctl eval "hl.dispatch(hl.dsp.exit())"'
+	)
 )
 hl.bind(win .. " + SPACE", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(menu))
