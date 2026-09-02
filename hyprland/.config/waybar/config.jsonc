@@ -1,14 +1,15 @@
 // -*- mode: jsonc -*-
 {
+	"output": [ "eDP-1", "eDP-2", "DP-1", "DP-2", "DP-3", "HDMI-A-1", "DVI-I-1" ],
 	"layer": "top", // Waybar at top layer
 	"position": "bottom", // Waybar position (top|bottom|left|right)
-	"height": 10, // Waybar height (to be removed for auto height)
+	"height": 27, // Waybar height (to be removed for auto height)
 	// "width": 1280, // Waybar width
 	"spacing": 0, // Gaps between modules (4px)
 	// Choose the order of the modules
 	"modules-left": [
 		"disk",
-		"disk#d",
+		// "disk#d",
 		"disk#e",
 		"network",
 		"cpu",
@@ -36,17 +37,17 @@
 	},
 	"disk": {
 		"interval": 15,
-		"path": "/",
+		"paths": ["/"],
 		"format": "󰋊 {free}"
 	},
-	"disk#d": {
-		"interval": 15,
-		"path": "/mnt/d",
-		"format": "󰋊 {free}"
-	},
+	// "disk#d": {
+	// 	"interval": 15,
+	// 	"path": "/mnt/d",
+	// 	"format": "󰋊 {free}"
+	// },
 	"disk#e": {
 		"interval": 15,
-		"path": "/mnt/e",
+		"paths": ["/mnt/e"],
 		"format": "󰋊 {free}"
 	},
 	"mpd": {
@@ -140,7 +141,7 @@
 		"format-bluetooth-muted": "󰸈 {icon}  {format_source}",
 		"format-muted": "󰸈 {format_source}",
 		"format-source": "{volume}% ",
-		"format-source-muted": " ",
+		"format-source-muted": "<span background=\"#900000\" foreground=\"#ffffff\">   </span>",
 		"format-icons": {
 			"headphone": "",
 			"headset": "",
